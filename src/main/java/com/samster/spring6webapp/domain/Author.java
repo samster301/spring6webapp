@@ -16,6 +16,17 @@ public class Author {
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 
+    @ManyToMany(mappedBy = "authors")
+    private Set<Publisher> publishers = new HashSet<>();
+
+    public Set<Publisher> getPublishers() {
+        return publishers;
+    }
+
+    public void setPublishers(Set<Publisher> publishers) {
+        this.publishers = publishers;
+    }
+
     public Set<Book> getBooks() {
         return books;
     }
