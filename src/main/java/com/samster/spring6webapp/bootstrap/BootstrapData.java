@@ -45,19 +45,19 @@ public class BootstrapData implements CommandLineRunner {
         Publisher penguinSaved = publisherRepository.save(penguin);
 
         Author rod = new Author();
-        cth.setFirstname("Rod");
-        cth.setLastname("Johnson");
+        rod.setFirstname("Rod");
+        rod.setLastname("Johnson");
 
         Book noEJB = new Book();
-        algo.setTitle("J2EE development without EJB");
-        algo.setIsbn("87654321");
+        noEJB.setTitle("J2EE development without EJB");
+        noEJB.setIsbn("87654321");
 
         Publisher jack = new Publisher();
         jack.setPublisherName("Jack Publishing");
         jack.setAddress("123 Mayor st");
-        penguin.setCity("Miami");
-        penguin.setState("Florida");
-        penguin.setZip("76766");
+        jack.setCity("Miami");
+        jack.setState("Florida");
+        jack.setZip("76766");
 
         Author rodSaved = authorRepository.save(rod);
         Book noEJBSaved = bookRepository.save(noEJB);
@@ -65,6 +65,7 @@ public class BootstrapData implements CommandLineRunner {
 
         cthSaved.getBooks().add(algoSaved);
         algoSaved.getAuthors().add(cthSaved);
+        algoSaved.setPublisher(penguinSaved);
 
         cthSaved.getPublishers().add(penguinSaved);
         penguinSaved.getAuthors().add(cthSaved);
@@ -72,6 +73,7 @@ public class BootstrapData implements CommandLineRunner {
 
         rodSaved.getBooks().add(noEJBSaved);
         noEJBSaved.getAuthors().add(rodSaved);
+        noEJBSaved.setPublisher(jackSaved);
 
         rodSaved.getPublishers().add(jackSaved);
         jackSaved.getAuthors().add(rodSaved);
